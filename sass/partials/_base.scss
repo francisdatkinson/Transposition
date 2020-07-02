@@ -1,0 +1,211 @@
+body {
+	background-color: #DDD;
+	margin-top: 0px;
+	font-family: "Calibri", sans-serif;
+	color: #427df4;
+	transition: all 0.2s ease;
+	overflow: hidden;
+	-webkit-tap-highlight-color: rgba(255,255,255,0);
+}
+.wrapper {
+	width: 960px;
+	margin: auto;
+}
+.header {
+	width: 100%;
+	margin-bottom: 5px;
+	background-color: white;
+}
+.main-body {
+	width: 100%;
+	padding-top: 90px;
+	height: 100vh;
+	background-color: white;
+}
+input {
+	font-size: 40px;
+	outline: none;
+	width: 200px;
+	padding: 20px;
+	font-weight: 600;
+	color: #427df4;
+	text-align: center;
+	margin-bottom: 20px;
+	background-color: #EFEFEF;
+	border: solid 2px #427df4;
+}
+.submit-button {
+	width: 200px;
+	color: white;
+	font-size: 30px;
+	background-color: #427df4;
+	border: 2px solid #427df4;
+	transform: scale(1.0);
+	cursor: pointer;
+}
+.submit-button:active {
+	transform: scale(0.98);
+}
+h1 {
+	padding: 40px;
+	line-height: 100%;
+	margin-top: 0px;
+	font-size: 50px;
+	padding-left: 0px;
+	width: 100%;
+	text-align: center;
+}
+h2 {
+	padding: 20px;
+}
+.transposition-keys {
+	margin-top: 15px;
+}
+.arrow {
+	width: 70px;
+	display: inline;
+	cursor: pointer;
+}
+.arrow:hover {
+	opacity: 0.5;
+}
+.howmany-h1 {
+	padding: 0px;
+	width: 100px;
+	display: inline;
+}
+.plusone {
+	transform: rotate(90deg);
+}
+.minusone {
+	transform: rotate(-90deg);
+}
+.plus, .minus {
+	display: none;
+}
+::selection {
+	background: rgba(255,255,255,0);
+}
+.capo, .trans-keys {
+	text-decoration: underline;
+	color: #ff6e14;
+	cursor: pointer;
+}
+.buttons {
+	display: none;
+}
+.capo-interface {
+	display: none;
+	opacity: 1;
+}
+.capo-interface table {
+	width: 80%;
+	border: solid 2px #427df4;
+}
+.fret {
+	border: 2px solid #427df4;
+	cursor: url(images/capo.png) 10 40, auto;
+	transition: all 0.1s linear;
+}
+.bridge {
+	border: 2px solid #427df4;
+	cursor: url(images/nocapo.png) 10 40, auto;
+	transition: all 0.1s linear;
+}
+.fret:hover {
+	background-color: #84adff;
+	color: white;
+}
+.fret:active {
+	background-color: #427df4;
+	color: white;
+	transition: all 0s linear;
+}
+.fret-active {
+	background-color: #427df4;
+	color: white;
+}
+.fret-active p {
+	color: white;
+}
+.fret-active:hover {
+	background-color: #427df4;
+	color: white;
+}
+.fret-red:hover {
+	background-color: #ff8484;
+}
+tr {
+	text-align: center;
+}
+.bridge {
+	width: 2%;
+}
+.fret1 {
+	width: 11.5%;
+}
+.fret2 {
+	width: 11%;
+}
+.fret3 {
+	width: 10.5%;
+}
+.fret4 {
+	width: 10%;
+}
+.fret5 {
+	width: 9.5%;
+}
+.fret6 {
+	width: 9%;
+}
+.fret7 {
+	width: 8.5%;
+}
+.fret8 {
+	width: 8%;
+}
+.fret9 {
+	width: 7.5%;
+}
+.fret10 {
+	width: 7%;
+}
+.fret11 {
+	width: 6.5%;
+}
+.fade {
+	opacity: 1;
+}
+.selectors {
+	transition: all 0.2s ease;
+}
+.halp {
+	color: #ff8484;
+	display: none;
+}
+.tchord {
+	margin: 0px;
+	padding: 0px;
+	position: relative;
+	top: 30px;
+}
+
+.additions {
+	margin: 0px;
+	padding: 0px;
+}
+.addtext {
+}
+.footer {
+	position: fixed;
+	bottom: 0px;
+	width: 100%;
+}
+.footer-text {
+	line-height: 100%;
+	padding: 0px;
+	margin: 0px;
+	padding-left: 10px;
+	padding-bottom: 10px;
+}

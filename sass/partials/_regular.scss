@@ -1,0 +1,25 @@
+.wrapper {
+	width: 100%;
+}
+.header {
+	display: none;
+}
+.main-body {
+	width: 100%;
+	padding-top: 0px;
+	height: 100vh;
+	background-color: white;
+}
+input {
+	font-size: 25px;
+	outline: none;
+	width: 200px;
+	padding: 20px;
+	height: auto;
+	font-weight: 600;
+	color: #427df4;
+	text-align: center;
+	margin-bottom: 0px;
+	background-color: #EFEFEF;
+	border: solid 2px #427df4;
+}

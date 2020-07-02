@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Transposition Site</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1, user-scalable=0">
+	<link rel="stylesheet" type="text/css" href="stylesheets/styles.css">
+	<link rel="icon" href="favicon.png">
+<!-- 	<script src="global.js"></script> -->
+	<script src="jquery-3.1.1.min.js"></script>
+	<script>
+		
+	$(document).ready(function() {
+		var howmany = $(".howmany");
+		var number = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+		var counter = 0;
+
+
+// transposition counter
+		console.log(number[counter]);
+		howmany.text(number[counter]);
+
+		$(".plusone").click(function() {
+			counter = (counter + 1) % number.length;
+			console.log(number[counter]);
+			howmany.text(number[counter]);
+		});
+
+		$(".plusone").click(function() {
+			if (counter == 0) {
+				$(".plus").css("display", "none");
+			}
+			else {
+				$(".plus").css("display", "inline");
+			};
+		});
+
+		$(".minusone").click(function() {
+			if (counter == 0) {
+				$(".plus").css("display", "none");
+				counter = (counter + 12);
+				$(".minusone").click();
+			}
+			else if (counter == 1) {
+				$(".plus").css("display", "none");
+				counter = (counter - 1) % number.length;
+				console.log(number[counter]);
+				howmany.text(number[counter]);
+			}
+			else {
+				$(".plus").css("display", "inline");
+				counter = (counter - 1) % number.length;
+				console.log(number[counter]);
+				howmany.text(number[counter]);
+			};
+		});
+
+// chord counter
+			// var allChords = [
+
+			// "A", "Bb", "B", "C", "C#", "D", "Eb", "E", "F", "F#", "G", "G#", 
+			// "Am", "Bbm", "Bm", "Cm", "C#m", "Dm", "D#m", "Em", "Fm", "F#m", "Gm", "G#m", 
+			// "A2", "Bb2", "B2", "C2", "C#2", "D2", "Eb2", "E2", "F2", "F#2", "G2", "G#2", 
+			// "Am2", "Bbm2", "Bm2", "Cm2", "C#m2", "Dm2", "D#m2", "Em2", "Fm2", "F#m2", "Gm2", "G#m2", 
+			// "Asus4", "Bbsus4", "Bsus4", "Csus4", "C#sus4", "Dsus4", "Ebsus4", "Esus4", "Fsus4", "F#sus4", "Gsus4", "G#sus4", 
+			// "Amsus4", "Bbmsus4", "Bmsus4", "Cmsus4", "C#msus4", "Dmsus4", "Ebmsus4", "Emsus4", "Fmsus4", "F#msus4", "Gmsus4", "G#msus4", 
+			// "Asus2", "Bbsus2", "Bsus2", "Csus2", "C#sus2", "Dsus2", "Ebsus2", "Esus2", "Fsus2", "F#sus2", "Gsus2", "G#sus2", 
+			// "Amsus2", "Bbmsus2", "Bmsus2", "Cmsus2", "C#msus2", "Dmsus2", "Ebmsus2", "Emsus2", "Fmsus2", "F#msus2", "Gmsus2", "G#msus2", 
+			// "Am7", "Bbm7", "Bm7", "Cm7", "C#m7", "Dm7", "Ebm7", "Em7", "Fm7", "F#m7", "Gm7", "G#m7", 
+			// "Amaj7", "Bbmaj7", "Bmaj7", "Cmaj7", "C#maj7", "Dmaj7", "Ebmaj7", "Emaj7", "Fmaj7", "F#maj7", "Gmaj7", "G#maj7", 
+			// "A7", "Bb7", "B7", "C7", "C#7", "D7", "Eb7", "E7", "F7", "F#7", "G7", "G#7"
+
+			// ];
+			var rootMajor = ["A", "Bb", "B", "C", "C#", "D", "Eb", "E", "F", "F#", "G", "G#"];
+			
+			var userInput = $(".chord");
+			var tchord = $(".tchord-text");
+			var addtext = $(".addtext");
+
+			$(".chord").keyup(function() {
+				if (0 == 0 || userInput.val().length == 0) {
+					tchord.text(userInput.val()).css("color", "#427df4");
+					counter = 0;
+					console.log(number[counter]);
+					howmany.text(number[counter]);
+					$(".plus").css("display", "none");
+					$("body").css("background-color", "#DDD");
+					$(".fret").removeClass("fret-active");
+					$(".bridge").addClass("fret-active");
+					addtext.text("");
+				}
+				// else {
+				// 	$("body").css("background-color", "#ff8484");
+				// 	tchord.text("Invalid Chord").css("color", "#ff8484");
+				// 	$(".halp").css("display", "inline");
+				// 	$(".chord, h2, .plus, .buttons-or-capo, .buttons, .counter-ref").css("color", "#ff8484");
+				// 	$(".chord, table, tr, td").css("border-color", "#ff8484");
+				// 	$(".arrow").attr("src", "stylesheets/images/arrowred.png");
+				// 	howmany.css("color", "#ff8484");
+				// 	$(".fret-active").css("background-color", "#ff8484");
+				// 	$(".fret-active p").css("color", "white");
+				// 	$(".capo-interface").css("cursor", "url(images/capored.png)");
+				// 	$(".bridge").css("cursor", "url(stylesheets/images/nocapored.png)");
+				// 	$(".fret").removeClass("fret-red");
+				// };
+			});
+
+			$(".bridge").click(function() {
+				counter = 0;
+				console.log(number[counter]);
+				howmany.text(number[counter]);
+				$(".plus").css("display", "none");
+				$(".fret").removeClass("fret-active");
+				$(this).addClass("fret-active");
+			});
+			$(".fret1").click(function() {
+				counter = 11;
+				console.log(number[counter]);
+				howmany.text(number[counter]);
+				$(".plus").css("display", "inline");
+				$(".fret").removeClass("fret-active");
+				$(this).addClass("fret-active");
+			});
+			$(".fret2").click(function() {
+				counter = 10;
+				console.log(number[counter]);
+				howmany.text(number[counter]);
+				$(".plus").css("display", "inline");
+				$(".fret").removeClass("fret-active");
+				$(this).addClass("fret-active");
+			});
+			$(".fret3").click(function() {
+				counter = 9;
+				console.log(number[counter]);
+				howmany.text(number[counter]);
+				$(".plus").css("display", "inline");
+				$(".fret").removeClass("fret-active");
+				$(this).addClass("fret-active");
+			});
+			$(".fret4").click(function() {
+				counter = 8;
+				console.log(number[counter]);
+				howmany.text(number[counter]);
+				$(".plus").css("display", "inline");
+				$(".fret").removeClass("fret-active");
+				$(this).addClass("fret-active");
+			});
+			$(".fret5").click(function() {
+				counter = 7;
+				console.log(number[counter]);
+				howmany.text(number[counter]);
+				$(".plus").css("display", "inline");
+				$(".fret").removeClass("fret-active");
+				$(this).addClass("fret-active");
+			});
+			$(".fret6").click(function() {
+				counter = 6;
+				console.log(number[counter]);
+				howmany.text(number[counter]);
+				$(".plus").css("display", "inline");
+				$(".fret").removeClass("fret-active");
+				$(this).addClass("fret-active");
+			});
+			$(".fret7").click(function() {
+				counter = 5;
+				console.log(number[counter]);
+				howmany.text(number[counter]);
+				$(".plus").css("display", "inline");
+				$(".fret").removeClass("fret-active");
+				$(this).addClass("fret-active");
+			});
+			$(".fret8").click(function() {
+				counter = 4;
+				console.log(number[counter]);
+				howmany.text(number[counter]);
+				$(".plus").css("display", "inline");
+				$(".fret").removeClass("fret-active");
+				$(this).addClass("fret-active");
+			});
+			$(".fret9").click(function() {
+				counter = 3;
+				console.log(number[counter]);
+				howmany.text(number[counter]);
+				$(".plus").css("display", "inline");
+				$(".fret").removeClass("fret-active");
+				$(this).addClass("fret-active");
+			});
+			$(".fret10").click(function() {
+				counter = 2;
+				console.log(number[counter]);
+				howmany.text(number[counter]);
+				$(".plus").css("display", "inline");
+				$(".fret").removeClass("fret-active");
+				$(this).addClass("fret-active");
+			});
+			$(".fret11").click(function() {
+				counter = 1;
+				console.log(number[counter]);
+				howmany.text(number[counter]);
+				$(".plus").css("display", "inline");
+				$(".fret").removeClass("fret-active");
+				$(this).addClass("fret-active");
+			});
+
+
+
+
+
+
+
+
+
+
+			$(".plusone, .minusone, .fret").click(function() {
+
+				switch (true) {
+					case (userInput.val().indexOf("maj7sus4") != -1):
+						addtext.text("maj7sus4");
+					break;
+					case (userInput.val().indexOf("maj7") != -1):
+						addtext.text("maj7");
+					break;
+					case (userInput.val().indexOf("dim") != -1):
+						addtext.text("dim");
+					break;
+					case (userInput.val().indexOf("7sus4") != -1):
+						addtext.text("7sus4");
+					break;
+					case (userInput.val().indexOf("msus4") != -1):
+						addtext.text("msus4");
+					break;
+					case (userInput.val().indexOf("msus2") != -1):
+						addtext.text("msus2");
+					break;
+					case (userInput.val().indexOf("sus4") != -1):
+						addtext.text("sus4");
+					break;
+					case (userInput.val().indexOf("sus2") != -1):
+						addtext.text("sus2");
+					break;
+					case (userInput.val().indexOf("msus9") != -1):
+						addtext.text("msus9");
+					break;
+					case (userInput.val().indexOf("sus9") != -1):
+						addtext.text("sus9");
+					break;
+					case (userInput.val().indexOf("msus") != -1):
+						addtext.text("msus");
+					break;
+					case (userInput.val().indexOf("sus") != -1):
+						addtext.text("sus");
+					break;
+					case (userInput.val().indexOf("madd9") != -1):
+						addtext.text("madd9");
+					break;
+					case (userInput.val().indexOf("maddE") != -1):
+						addtext.text("maddE");
+					break;
+					case (userInput.val().indexOf("madd") != -1):
+						addtext.text("madd");
+					break;
+					case (userInput.val().indexOf("add9") != -1):
+						addtext.text("add9");
+					break;
+					case (userInput.val().indexOf("addE") != -1):
+						addtext.text("addE");
+					break;
+					case (userInput.val().indexOf("add") != -1):
+						addtext.text("add");
+					break;
+					case (userInput.val().indexOf("m79+") != -1):
+						addtext.text("m79+");
+					break;
+					case (userInput.val().indexOf("79+") != -1):
+						addtext.text("79+");
+					break;
+					case (userInput.val().indexOf("m7+") != -1):
+						addtext.text("m7+");
+					break;
+					case (userInput.val().indexOf("7+") != -1):
+						addtext.text("7+");
+					break;
+					case (userInput.val().indexOf("m911") != -1):
+						addtext.text("m911");
+					break;
+					case (userInput.val().indexOf("911") != -1):
+						addtext.text("911");
+					break;
+					case (userInput.val().indexOf("m13") != -1):
+						addtext.text("m13");
+					break;
+					case (userInput.val().indexOf("m11") != -1):
+						addtext.text("m11");
+					break;
+					case (userInput.val().indexOf("m9") != -1):
+						addtext.text("m9");
+					break;
+					case (userInput.val().indexOf("m7") != -1):
+						addtext.text("m7");
+					break;
+					case (userInput.val().indexOf("m6") != -1):
+						addtext.text("m6");
+					break;
+					case (userInput.val().indexOf("m4") != -1):
+						addtext.text("m4");
+					break;
+					case (userInput.val().indexOf("m2") != -1):
+						addtext.text("m2");
+					break;
+					case (userInput.val().indexOf("13") != -1):
+						addtext.text("13");
+					break;
+					case (userInput.val().indexOf("11") != -1):
+						addtext.text("11");
+					break;
+					case (userInput.val().indexOf("9") != -1):
+						addtext.text("9");
+					break;
+					case (userInput.val().indexOf("7") != -1):
+						addtext.text("7");
+					break;
+					case (userInput.val().indexOf("6") != -1):
+						addtext.text("6");
+					break;
+					case (userInput.val().indexOf("4") != -1):
+						addtext.text("4");
+					break;
+					case (userInput.val().indexOf("2") != -1):
+						addtext.text("2");
+					break;
+
+
+
+
+
+
+
+					case (userInput.val().indexOf("m") != -1):
+						addtext.text("m");
+					break;
+					case (userInput.val().indexOf("m") != -1):
+						addtext.text("m");
+					break;
+					default:
+						$(".addtext").css("display", "none");
+						addtext.text("");
+					break;
+				};
+
+
+
+				switch (true) {
+					case (userInput.val().indexOf("A") == 0):
+						var rootMajor = ["A", "Bb", "B", "C", "C#", "D", "Eb", "E", "F", "F#", "G", "G#"];
+						tchord.text(rootMajor[counter]);
+						break;
+					case (userInput.val().indexOf("Bb") != -1):
+						var rootMajor = ["Bb", "B", "C", "C#", "D", "Eb", "E", "F", "F#", "G", "G#", "A"];
+						tchord.text(rootMajor[counter]);
+						break;
+					case (userInput.val().indexOf("B") != -1):
+						var rootMajor = ["B", "C", "C#", "D", "Eb", "E", "F", "F#", "G", "G#", "A", "Bb"];
+						tchord.text(rootMajor[counter]);
+						break;
+					case (userInput.val().indexOf("C#") != -1):
+						var rootMajor = ["C#", "D", "Eb", "E", "F", "F#", "G", "G#", "A", "Bb", "B", "C"];
+						tchord.text(rootMajor[counter]);
+						break;
+					case (userInput.val().indexOf("C") != -1):
+						var rootMajor = ["C", "C#", "D", "Eb", "E", "F", "F#", "G", "G#", "A", "Bb", "B"];
+						tchord.text(rootMajor[counter]);
+						break;
+					case (userInput.val().indexOf("D") != -1):
+						var rootMajor = ["D", "Eb", "E", "F", "F#", "G", "G#", "A", "Bb", "B", "C", "C#"];
+						tchord.text(rootMajor[counter]);
+						break;
+					case (userInput.val().indexOf("Eb") != -1):
+						var rootMajor = ["Eb", "E", "F", "F#", "G", "G#", "A", "Bb", "B", "C", "C#", "D"];
+						tchord.text(rootMajor[counter]);
+						break;
+					case (userInput.val().indexOf("E") != -1):
+						var rootMajor = ["E", "F", "F#", "G", "G#", "A", "Bb", "B", "C", "C#", "D", "Eb"];
+						tchord.text(rootMajor[counter]);
+						break;
+					case (userInput.val().indexOf("F#") != -1):
+						var rootMajor = ["F#", "G", "G#", "A", "Bb", "B", "C", "C#", "D", "Eb", "E", "F"];
+						tchord.text(rootMajor[counter]);
+						break;
+					case (userInput.val().indexOf("F") != -1):
+						var rootMajor = ["F", "F#", "G", "G#", "A", "Bb", "B", "C", "C#", "D", "Eb", "E"];
+						tchord.text(rootMajor[counter]);
+						break;
+					case (userInput.val().indexOf("G#") != -1):
+						var rootMajor = ["G#", "A", "Bb", "B", "C", "C#", "D", "Eb", "E", "F", "F#", "G"];
+						tchord.text(rootMajor[counter]);
+						break;
+					case (userInput.val().indexOf("G") != -1):
+						var rootMajor = ["G", "G#", "A", "Bb", "B", "C", "C#", "D", "Eb", "E", "F", "F#"];
+						tchord.text(rootMajor[counter]);
+						break;
+					default:
+						tchord.text("Invalid Chord").css("color", "#ff6e14");
+						break;
+				};
+			});
+
+				$(".capo").click(function() {
+					setTimeout(function() {
+						$(".tchord").css("top", "53px");
+					}, 200);
+				});
+				$(".buttons").click(function() {
+					setTimeout(function() {
+						$(".tchord").css("top", "70px");
+					}, 200);
+				});
+
+
+
+				$(".capo, .trans-keys").click(function() {
+					setTimeout(function() {
+						$(".selectors").css("opacity", "0");
+					}, 0);
+					setTimeout(function() {
+						$(".capo-interface, .transposition-keys, .buttons-or-capo").toggle();
+					switch (howmany.text()) {
+						case "1":
+							$(".fret").removeClass("fret-active");
+							$(".fret11").addClass("fret-active");
+							break;
+						case "2":
+							$(".fret").removeClass("fret-active");
+							$(".fret10").addClass("fret-active");
+							break;
+						case "3":
+							$(".fret").removeClass("fret-active");
+							$(".fret9").addClass("fret-active");
+							break;
+						case "4":
+							$(".fret").removeClass("fret-active");
+							$(".fret8").addClass("fret-active");
+							break;
+						case "5":
+							$(".fret").removeClass("fret-active");
+							$(".fret7").addClass("fret-active");
+							break;
+						case "6":
+							$(".fret").removeClass("fret-active");
+							$(".fret6").addClass("fret-active");
+							break;
+						case "7":
+							$(".fret").removeClass("fret-active");
+							$(".fret5").addClass("fret-active");
+							break;
+						case "8":
+							$(".fret").removeClass("fret-active");
+							$(".fret4").addClass("fret-active");
+							break;
+						case "9":
+							$(".fret").removeClass("fret-active");
+							$(".fret3").addClass("fret-active");
+							break;
+						case "10":
+							$(".fret").removeClass("fret-active");
+							$(".fret2").addClass("fret-active");
+							break;
+						case "11":
+							$(".fret").removeClass("fret-active");
+							$(".fret1").addClass("fret-active");
+							break;
+						case "0":
+							$(".fret").removeClass("fret-active");
+							$(".bridge").addClass("fret-active");
+							break;
+						default:
+							$("fret").removeClass("fret-active");
+							$(".bridge").addClass("fret-active");
+					};
+					$(".selectors").css("opacity", "1");
+					}, 200);
+					
+			});
+				$(".fret1").click(function() {
+					$(".fret").removeClass("fret-active");
+					$(this).addClass("fret-active");
+				});
+	});
+
+	$(document).ready(function() {
+  		$(window).keydown(function(event){
+    		if(event.keyCode == 13) {
+      			$(".chord").blur();
+      			$(".tchord").focusin();
+    		}
+  		});
+	});
+	// automatic date update
+	$(document).ready(function() {
+		$(".date").text(new Date().getFullYear());
+	});
+
+	</script>
+</head>
+<body>
+	<div class="wrapper">
+		<div class="header">
+			<h1>Chord Transposer</h1>
+		</div>
+		<div class="main-body">
+			<center class="center">
+				<h2>Enter your chord (root notes should be capitalised):</h2>
+				<form>
+					<input class="chord" type="text" name="Chords" onClick="this.form.reset()"><br>
+					<!-- <input class="submit-button" type="button" name="submit" value="Transpose!"> -->
+				</form>
+				<div class="selectors">
+					<p class="buttons-or-capo">Use the arrows to add/remove a semitone, or use a <span class="capo">capo</span></p>
+					<p class="buttons-or-capo buttons">Click the fret you want to capo on or use the <span class="trans-keys">transposition keys</span></p>
+					<div class="transposition-keys selection-method">
+						<img class="arrow minusone" src="stylesheets/images/arrow.png">
+							<h1 class="howmany-h1"><span class="plus">+</span><span class="howmany"></span></h1>
+						<img class="arrow plusone" src="stylesheets/images/arrow.png">
+					</div>
+					<div class="capo-interface selection-method">
+						<table>
+							<tbody>
+								<tr>
+									<td class="fret fret-active bridge">
+										<p class="counter-ref">0</p>
+									</td>
+									<td class="fret fret1">
+										<p class="counter-ref">1</p>
+									</td>
+									<td class="fret fret2">
+										<p class="counter-ref">2</p>
+									</td>
+									<td class="fret fret3">
+										<p class="counter-ref">3</p>
+									</td>
+									<td class="fret fret4">
+										<p class="counter-ref">4</p>
+									</td>
+									<td class="fret fret5">
+										<p class="counter-ref">5</p>
+									</td>
+									<td class="fret fret6">
+										<p class="counter-ref">6</p>
+									</td>
+									<td class="fret fret7">
+										<p class="counter-ref">7</p>
+									</td>
+									<td class="fret fret8">
+										<p class="counter-ref">8</p>
+									</td>
+									<td class="fret fret9">
+										<p class="counter-ref">9</p>
+									</td>
+									<td class="fret fret10">
+										<p class="counter-ref">10</p>
+									</td>
+									<td class="fret fret11">
+										<p class="counter-ref">11</p>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<h1 class="tchord"><span class="tchord-text"></span><span class="additions addtext"></span></h1>
+					<!-- <h1 class="additions m">m</h1> -->
+					<!-- <h1 class="additions dom7">7</h1> -->
+					<!-- <h1 class="additions maj7">maj7</h1> -->
+					<!-- <h1 class="additions sus">sus</h1> -->
+					<!-- <h1 class="additions add">add</h1> -->
+					<!-- <h1 class="additions dim">dim</h1> -->
+					<!-- <h1 class="additions m7">m7</h1> -->
+					<!-- <h1 class="additions sus2">sus2</h1> -->
+					<!-- <h1 class="additions msus2">msus2</h1> -->
+					<!-- <h1 class="additions sus4">sus4</h1> -->
+					<!-- <h1 class="additions msus4">msus4</h1> -->
+					<!-- <h1 class="additions dom2">2</h1> -->
+					<!-- <h1 class="additions dom4">4</h1> -->
+					<!-- <h1 class="additions dom6">6</h1> -->
+					<!-- <h1 class="additions dom7">7</h1> -->
+					<!-- <h1 class="additions dom9">9</h1> -->
+					<!-- <h1 class="additions dom11">11</h1> -->
+					<!-- <h1 class="additions dom13">13</h1> -->
+					<!-- <h1 class="additions dom79+">79+</h1> -->
+					<!-- <h1 class="additions dom7+">7+</h1> -->
+					<!-- <h1 class="additions dom7sus4">7sus4</h1> -->
+					<!-- <h1 class="additions add9">add9</h1> -->
+					<!-- <h1 class="additions maj7sus4">maj7sus4</h1> -->
+					<!-- <h1 class="additions addE">addE</h1> -->
+					<!-- <h1 class="additions dom911">911</h1> -->
+					<!-- <h1 class="additions sus9">sus9</h1> -->
+					<!-- <h1 class="additions plus">+</h1> -->
+				<p class="halp">Please enter your chord with a capital letter in standard musical notation</p>
+			</center>
+		</div>
+		<div class="footer"><p class="footer-text">&copy; Francis Atkinson <span class="date"></span></p></div>
+	</div>
+
+</body>
+</html>

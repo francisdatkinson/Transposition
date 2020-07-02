@@ -1,0 +1,13 @@
+@import "partials/variables";
+@import "partials/normalize";
+@import "partials/base";
+
+@media (max-width:37.5em){
+	@import "partials/mobile";
+}
+@media (min-width:37.5em){
+	@import "partials/regular";
+}
+@media (min-width:960px){
+	@import "partials/wide";
+}
